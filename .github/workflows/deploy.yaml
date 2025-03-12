@@ -23,5 +23,5 @@ jobs:
             echo "Connected to EC2!"
             sudo ./gitPullReact.sh
             sudo npm install
-            sudo npm run dev
+            sudo npm run build
             sudo systemctl restart apache2
