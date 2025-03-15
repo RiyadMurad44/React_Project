@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles.css";
-import ImageButton from "../Image Button";
+import ImageButton from "../ImageButton";
 
 const Navbar = () => {
   return (

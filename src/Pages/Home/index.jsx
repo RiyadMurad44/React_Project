@@ -1,5 +1,5 @@
 import React from "react";
-import ImageCard from "../../Components/Image Card/imageCard";
+import ImageCard from "../../Components/ImageCard";
 import Navbar from "../../Components/Navbar";
 import "./styles.css";
 
