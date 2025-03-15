@@ -1,0 +1,79 @@
+.add-image-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  
+  .add-image-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .image-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .image-form input,
+  .image-form textarea {
+    width: 100%;
+    max-width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border 0.3s;
+    box-sizing: border-box;
+  }
+  
+  .image-form input:focus,
+  .image-form textarea:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  .image-form textarea {
+    resize: vertical;
+    height: 100px;
+  }
+  
+  .image-form input[type="file"] {
+    border: none;
+  }
+  
+  .image-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+  }
+  
+  .image-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  @media (max-width: 500px) {
+    .add-image-container {
+      width: 90%;
+      padding: 15px;
+    }
+  }
+  

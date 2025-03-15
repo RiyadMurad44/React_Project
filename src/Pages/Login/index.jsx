@@ -14,7 +14,7 @@ const Login = () => {
   return (
     <div className="login-container">
       <form className="login-form" onSubmit={handleSubmit}>
-        <h2>Login Hello Mr.</h2>
+        <h2>Login</h2>
         <div className="input-group">
           <label>Email</label>
           <input
@@ -33,7 +33,7 @@ const Login = () => {
             required
           />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" className="login-button">Login</button>
         <p className="signup-description">Don't have an account?</p>
         <p className="signup-link">
           <Link to="/signup">Sign up</Link>

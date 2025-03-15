@@ -1,0 +1,45 @@
+/* Base button styles */
+.image-button {
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 0.5em 1em;  
+    margin: 0.8em;
+    background-color: #2f2525;
+    color: #ffffff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .image-button p {
+    margin: 0;  
+  }
+  
+  /* Hover effect */
+  .image-button:hover {
+    transform: scale(1.05);  
+  }
+  
+  /* Focus effect (for accessibility) */
+  /* .image-button:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.8);
+  } */
+  
+  /* Responsive adjustments for smaller screens */
+  @media (max-width: 768px) {
+    .image-button {
+      font-size: 0.9rem;  
+      padding: 0.4em 0.8em; 
+      margin: 0.6em;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .image-button {
+      font-size: 0.8rem;  
+      padding: 0.3em 0.6em;  
+      margin: 0.4em;
+    }
+  }
+  
