@@ -49,6 +49,9 @@ const Signup = () => {
         <p className="login-link">
           <Link to="/">Login</Link>
         </p>
+        <p className="login-link">
+          <Link to="/home">Go to Home</Link>
+        </p>
       </form>
     </div>
   );

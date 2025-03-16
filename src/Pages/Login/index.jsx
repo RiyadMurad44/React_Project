@@ -38,6 +38,9 @@ const Login = () => {
         <p className="signup-link">
           <Link to="/signup">Sign up</Link>
         </p>
+        <p className="signup-link">
+          <Link to="/home">Go to Home</Link>
+        </p>
       </form>
     </div>
   );
