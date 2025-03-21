@@ -16,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20' 
+          node-version: "20"
 
       - name: Install dependencies
         run: npm install
@@ -24,11 +24,24 @@ jobs:
       - name: Build React app
         run: npm run build
 
+        # 🟢 NEW: Verify zip is installed properly
       - name: Install zip utility
-        run: sudo apt-get update && sudo apt-get install -y zip
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y zip
+          zip -v  # ✅ Confirm zip is now available
 
+      # ✅ Compress the correct folder — double check that 'dist' exists
       - name: Compress build folder
-        run: zip -r build.zip dist  
+        run: |
+          ls -la dist  # ✅ Optional: Confirm build folder exists
+          zip -r build.zip dist
+
+      # - name: Install zip utility
+      #   run: sudo apt-get update && sudo apt-get install -y zip
+
+      # - name: Compress build folder
+      #   run: zip -r build.zip dist
 
       - name: Copy build to EC2
         uses: appleboy/scp-action@v0.1.4
