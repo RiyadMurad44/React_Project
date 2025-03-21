@@ -16,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '20' 
 
       - name: Install dependencies
         run: npm install
@@ -25,7 +25,7 @@ jobs:
         run: npm run build
 
       - name: Compress build folder
-        run: zip -r build.zip build 
+        run: zip -r build.zip dist  
 
       - name: Copy build to EC2
         uses: appleboy/scp-action@v0.1.4
@@ -44,9 +44,8 @@ jobs:
           key: ${{ secrets.EC2_KEY }}
           script: |
             echo "Unzipping and deploying..."
-            sudo rm -rf /var/www/html/React_Project/dist  
-            unzip /home/${{ secrets.EC2_USER }}/build.zip -d /tmp  
-            mv /tmp/build /var/www/html/React_Project/dist 
+            sudo rm -rf /var/www/html/React_Project/dist
+            unzip /home/${{ secrets.EC2_USER }}/build.zip -d /var/www/html/React_Project  
             sudo rm /home/${{ secrets.EC2_USER }}/build.zip
             sudo systemctl restart apache2
             echo "Deployment completed!"
