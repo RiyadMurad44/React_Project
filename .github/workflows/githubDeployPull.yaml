@@ -1,0 +1,52 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build React app
+        run: npm run build
+
+      - name: Compress build folder
+        run: zip -r build.zip build 
+
+      - name: Copy build to EC2
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_KEY }}
+          source: "build.zip"
+          target: "/home/${{ secrets.EC2_USER }}/build.zip"
+
+      - name: Deploy on EC2
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_KEY }}
+          script: |
+            echo "Unzipping and deploying..."
+            sudo rm -rf /var/www/html/React_Project/dist  
+            unzip /home/${{ secrets.EC2_USER }}/build.zip -d /tmp  
+            mv /tmp/build /var/www/html/React_Project/dist 
+            sudo rm /home/${{ secrets.EC2_USER }}/build.zip
+            sudo systemctl restart apache2
+            echo "Deployment completed!"
